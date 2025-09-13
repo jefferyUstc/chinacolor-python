@@ -3,8 +3,8 @@
 Chinese traditional colors and palettes for matplotlib/seaborn. The Python Version of [chinacolor](https://github.com/zhiming-chen/chinacolor)
 
 ## Features
-- [384 traditional colors](./checklist/colors.html)
-- [60 predefined palettes](./checklist/palettes.html) (sequential/diverging/qualitative)
+- [384 traditional colors](https://htmlpreview.github.io/?https://github.com/jefferyUstc/chinacolor-python/blob/main/checklist/colors.html)
+- [60 predefined palettes](https://htmlpreview.github.io/?https://github.com/jefferyUstc/chinacolor-python/blob/main/checklist/palettes.html) (sequential/diverging/qualitative)
 - Utilities to get palettes as color lists or matplotlib colormaps
 - Helper plotting to preview palettes
   - `plot_palette`, `plot_palettes`, `plot_color_grid`
