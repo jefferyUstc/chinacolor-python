@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ChinaColor · Colors (DataTables)</title>
+  <style>
+    :root { --bg:#F5F2E9; --panel:#EAE4D1; --text:#422517; --muted:#775039; --accent:#A46244; --card:#F7F3E6; --border:#C7C6B6; }
+    body { margin:0; background:var(--bg); color:var(--text); font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Noto Sans, Arial; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 30px 20px; }
+    .title { font-size: 22px; font-weight: 800; margin-bottom: 16px; }
+    table.dataTable { border-collapse: separate !important; border-spacing: 0; background:var(--panel); border:1px solid var(--border); border-radius: 14px; overflow: hidden; box-shadow: 0 8px 18px rgba(66,37,23,.08); }
+    table.dataTable thead th { background:#E0E0D0; color:#422517; }
+    table.dataTable th, table.dataTable td { border-bottom: 1px solid var(--border); }
+    .swatch { display:inline-block; width: 56px; height: 18px; border:1px solid #0006; border-radius: 6px; }
+    tfoot input { width: 100%; box-sizing: border-box; padding:6px 8px; border:1px solid var(--border); border-radius: 8px; background:var(--card); color:var(--text) }
+  </style>
+  <!-- DataTables CDN -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css" />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="title">384 Traditional Chinese Colors</div>
+    <table id='tbl' class='display nowrap' style='width:100%'>
+      <thead>
+        <tr><th>color_id</th><th>color</th><th>hex</th><th>name</th><th>group</th><th>subgroup</th><th>solar_term_c</th><th>solar_term_e</th></tr>
+      </thead>
+      <tbody>
+        {{BODY_ROWS}}
+      </tbody>
+      <tfoot>
+        <tr><th>color_id</th><th>color</th><th>hex</th><th>name</th><th>group</th><th>subgroup</th><th>solar_term_c</th><th>solar_term_e</th></tr>
+      </tfoot>
+    </table>
+  </div>
+  <script>
+  $(document).ready(function() {
+    $('#tbl tfoot th').each(function() {
+      var title = $(this).text();
+      $(this).html('<input type="text" placeholder="'+title+'" />');
+    });
+    var table = $('#tbl').DataTable({
+      pageLength: {{PAGE_LENGTH}},
+      scrollX: true,
+      deferRender: true
+    });
+    table.columns().every(function () {
+      var that = this;
+      $('input', this.footer()).on('keyup change clear', function() {
+        if (that.search() !== this.value) { that.search(this.value).draw(); }
+      });
+    });
+  });
+  </script>
+</body>
+</html>
+

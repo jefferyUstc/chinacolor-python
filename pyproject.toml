@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "chinacolor"
+version = "0.1.0"
+description = "Chinese traditional colors and palettes for matplotlib/seaborn"
+readme = "README.md"
+requires-python = ">=3.9"
+authors = [
+  { name = "Jeffery", email = "" }
+]
+keywords = ["colors", "palettes", "colormap", "matplotlib", "seaborn", "visualization", "china", "traditional"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Topic :: Scientific/Engineering :: Visualization",
+]
+dependencies = [
+  "matplotlib>=3.5",
+  "numpy>=1.21",
+]
+
+[project.optional-dependencies]
+seaborn = ["seaborn>=0.12"]
+pandas = ["pandas>=1.2"]
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["."]
+
+[tool.setuptools.package-data]
+chinacolor = ["data/*.json", "data/*.csv", "data/*.ttf", "templates/*.html"]

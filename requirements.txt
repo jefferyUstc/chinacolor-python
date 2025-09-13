@@ -1,0 +1,7 @@
+matplotlib>=3.5
+numpy>=1.21
+
+# Optional extras (uncomment as needed)
+# seaborn>=0.12
+# pandas>=1.2
+# colorspacious>=1.1.2  # for precise HCL conversion in color parsing

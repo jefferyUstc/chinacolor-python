@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ChinaColor · Colors</title>
+  <style>
+    :root { --bg:#F5F2E9; --panel:#EAE4D1; --text:#422517; --muted:#775039; --accent:#A46244; --card:#F7F3E6; --border:#C7C6B6; }
+    body { margin:0; background:var(--bg); color:var(--text); font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Noto Sans, Arial; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 30px 20px; }
+    .title { font-size: 22px; font-weight: 800; margin-bottom: 14px; }
+    .bar { display:flex; align-items:center; gap:12px; margin-bottom: 14px; }
+    input[type='search'] { flex:1; padding:10px 12px; border:1px solid var(--border); border-radius:12px; background:var(--panel); color:var(--text); box-shadow: inset 0 1px 2px rgba(66,37,23,.06); }
+    table { width:100%; border-collapse: collapse; background:var(--panel); border-radius: 14px; overflow: hidden; border:1px solid var(--border); box-shadow: 0 8px 18px rgba(66,37,23,.08); }
+    th, td { padding: 11px 12px; border-bottom: 1px solid var(--border); font-size: 13px; }
+    th { text-align:left; background: #E0E0D0; color:#422517; position: sticky; top:0; }
+    .swatch { display:inline-block; width: 56px; height: 18px; border:1px solid #0006; border-radius: 6px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="title">384 Traditional Chinese Colors</div>
+    <div class="bar">
+      <input id="q" type="search" placeholder="Filter by name / hex / term / id..." oninput="filter()" />
+    </div>
+    <table id="tbl">
+      <thead>
+        <tr><th>ID</th><th>Color</th><th>HEX</th><th>Name</th><th>Group</th><th>Subgroup</th><th>Solar(CN)</th><th>Solar(EN)</th></tr>
+      </thead>
+      <tbody>
+        {{ROWS}}
+      </tbody>
+    </table>
+  </div>
+  <script>
+    function filter(){
+      const q = document.getElementById('q').value.toLowerCase();
+      document.querySelectorAll('#tbl tbody tr').forEach(tr=>{
+        tr.style.display = tr.innerText.toLowerCase().includes(q) ? '' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>
